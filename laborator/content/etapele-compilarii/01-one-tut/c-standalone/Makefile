@@ -14,10 +14,12 @@ hello: hello.o start.o puts.o
 hello.o: hello.c
 
 start.o: start.asm
-	$(AS) $(ASFLAGS) -o $@ $<
+	# $(AS) $(ASFLAGS) -o $@ $<
+	ld -dynamic-linker /lib/ld-linux.so.2 -m elf_i386 -o $@ /usr/lib32/crt1.o /usr/lib32/crti.o $^ -lc /usr/lib32/crtn.o
 
 puts.o: puts.asm
-	$(AS) $(ASFLAGS) -o $@ $<
+	# $(AS) $(ASFLAGS) -o $@ $<
+	ld -dynamic-linker /lib/ld-linux.so.2 -m elf_i386 -o $@ /usr/lib32/crt1.o /usr/lib32/crti.o $^ -lc /usr/lib32/crtn.o
 
 clean:
 	-rm -f hello hello.o start.o puts.o
