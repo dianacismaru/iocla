@@ -1,5 +1,7 @@
 extern puts
 
+global main
+
 section .rodata
 
     hi_str db "Hi!", 0
