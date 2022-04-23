@@ -73,17 +73,20 @@ main:
     mov al, byte [sample_student + age]
     xor ebx, ebx
     mov bl, al
+    inc ebx
     push ebx
     push dec_format
     call printf
     add esp, 8
 
+grupa:
     lea ebx, [string_group]
     push ebx
     push string_format
     call printf
     add esp, 8
     lea eax, [sample_student + group]
+    mov byte [eax + 2], '3' 
     push eax
     push string_endline_format
     call printf
@@ -110,6 +113,7 @@ main:
     mov ax, [sample_student + birth_year]
     xor ebx, ebx
     mov bx, ax
+    dec ebx
     push ebx
     push dec_format
     call printf
