@@ -22,6 +22,16 @@ main:
     xor eax, eax     ;store the sum in eax
 
     ; use loop instruction
+    xor ebx, ebx
+    mov edx, 1
+
+    mov ecx, [N]    ; ecx = 9
+
+fibo:
+    add eax, edx    ; am adaugat nr la suma
+    xchg ebx, edx
+    add edx, ebx    ; am calculat urmatorul termen
+    loop fibo
 
     push eax
     push print_format_2
