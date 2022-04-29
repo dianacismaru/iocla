@@ -16,26 +16,20 @@ global main
 main:
     xor eax, eax
     mov ecx, ARRAY_SIZE
+    xor ebx, ebx
 
-    ; TODO1 - compute the sum of the vector numbers - store it in eax
+while:
+    mov bx, word [num_array + 2 * (ecx - 1)]
+    add eax, ebx
+loop while
 
-    PRINTF32 `Sum of numbers: %d\n\x0`, eax
+    PRINTF32 `Sum of numbers: %u\n\x0`, eax
 
     ; TODO2 - compute the quotient of the mean
+    xor edx, edx
+    mov ecx, ARRAY_SIZE
+    div ecx
 
-    PRINTF32 `Mean of numbers: %d\x0`, eax
-    PRINTF32 `.\x0`
+    PRINTF32 `Mean of numbers: %d\n\x0`, eax
 
-    mov ecx, DECIMAL_PLACES
-compute_decimal_place:
-
-    ; TODO3 - compute the current decimal place - store it in ax
-
-    PRINTF32 `%d\x0`, eax
-    dec ecx
-    cmp ecx, 0
-    jg compute_decimal_place
-
-    PRINTF32 `\n\x0`
-    xor eax, eax
     ret
