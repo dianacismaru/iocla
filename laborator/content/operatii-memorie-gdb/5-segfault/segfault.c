@@ -25,7 +25,9 @@ int main() {
 	for (int i = 0 ; i < n; ++i)
 		v[i] = nth_fibo(i);
 
-	v[423433] = 3;
+	// Cannot access memory at this address
+	// v[423433] = 3;
+	
 	free(v);
 
 	return 0;
